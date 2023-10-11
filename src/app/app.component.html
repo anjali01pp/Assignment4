@@ -26,8 +26,8 @@
             Duration: {{ order.timeNeeded }} hours, Kilometers: {{ order.approxDistance }} km
           </div>
           <div class="order-cost" >
-            <strong> Cost:</strong>
-            <h4  *ngIf="order.driver && order.vehicle"> {{ distancecost | currency: 'INR':'symbol-narrow' }}</h4>
+            <strong> Cost:<span  *ngIf="order.driver && order.vehicle"> {{ distancecost | currency: 'INR':'symbol-narrow' }}</span></strong>
+          
           </div>
       
           <div class="order-cost">
