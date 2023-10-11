@@ -27,7 +27,7 @@
           </div>
           <div class="order-cost" >
             <strong> Cost:</strong>
-            <h3  *ngIf="order.driver && order.vehicle"> {{ distancecost | currency: 'INR':'symbol-narrow' }}</h3>
+            <h4  *ngIf="order.driver && order.vehicle"> {{ distancecost | currency: 'INR':'symbol-narrow' }}</h4>
           </div>
       
           <div class="order-cost">

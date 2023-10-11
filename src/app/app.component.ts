@@ -32,7 +32,7 @@ dropvehicle:any;
   //   this.calculateOrderCost(order);
   // }
   onVehicleDropped(event: CdkDragDrop<string[]>, order: any) {
- 
+  
     const droppedVehicle = this.vehicles[event.previousIndex];
     
   
@@ -49,6 +49,7 @@ dropvehicle:any;
       }
     }
   }
+
   
   
   onDriverDropped(event: CdkDragDrop<string[]>, order: any) {
