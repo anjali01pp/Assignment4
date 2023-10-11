@@ -57,6 +57,7 @@ dropvehicle:any;
   
     if (!order.driver) {
       if ((droppedDriver.posessHeavyVehicleLicence && order.purpose === 'G') || (!droppedDriver.posessHeavyVehicleLicence && order.purpose === 'P')) {
+        
         order.driver = droppedDriver;
         this.drivers.splice(event.previousIndex, 1);
         this.calculateOrderCost(order);

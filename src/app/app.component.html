@@ -13,12 +13,12 @@
         <div class="order" *ngFor="let order of orders;">
          
           <div class="" id="ordersv" cdkDropList  [cdkDropListConnectedTo]="['vehicles']" [cdkDropListData]="orders" (cdkDropListDropped)="onVehicleDropped($event, order)">
-            <div class="order-vehicle" *ngIf="!order.vehicle" cdkDrag>Drop Vehicle Here</div>
+            <div class="order-vehicle" *ngIf="!order.vehicle" cdkDrop>Drop Vehicle Here</div>
             <div class="order-vehicle" *ngIf="order.vehicle" cdkDrag>{{ order.vehicle.name }}</div>
           </div>
           <div class="" id="ordersd" cdkDropList [cdkDropListConnectedTo]="['drivers']" [cdkDropListData]="orders"
             (cdkDropListDropped)="onDriverDropped($event, order)">
-            <div class="order-driver" *ngIf="!order.driver" cdkDrag>Drop Driver Here</div>
+            <div class="order-driver" *ngIf="!order.driver" cdkDrop>Drop Driver Here</div>
             <div class="order-driver" *ngIf="order.driver" cdkDrag>{{ order.driver.name }}</div>
           </div>
           <div class="order-details">
