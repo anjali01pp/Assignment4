@@ -3,7 +3,7 @@
   <div>
     <div class="example-container">
     
-      <h2 style="text-align: center;">Vehicles:</h2>
+      <h2 style="Padding:10px;">Vehicles:</h2>
       <div id="vehicles" cdkDropList [cdkDropListData]="vehicles"  class="example-list" [cdkDropListConnectedTo]="['ordersv']"
         (cdkDropListDropped)="drop($event)">
         <div class="example-box" cdkDrag  *ngFor="let item of vehicles" > 
@@ -80,7 +80,7 @@
     </div>
     <div>
     <div class="example-container">
-      <h2 >Drivers:</h2>
+      <h2 style="Padding:10px;">Drivers:</h2>
       <div id="drivers" cdkDropList [cdkDropListData]="drivers" class="example-list" [cdkDropListConnectedTo]="['ordersd']"
         (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let driver of drivers" cdkDrag>
