@@ -37,7 +37,7 @@ dropvehicle:any;
     
   
     if (!order.vehicle) {
-      if ((droppedVehicle.vehicleType === 'L' && order.purpose === 'P') || (droppedVehicle.vehicleType === 'H' && order.purpose === 'G')) {
+      if ((droppedVehicle.vehicleType === 'L' && order.purpose === 'P') || (droppedVehicle.vehicleType === 'H' && order.numPassengers == null && order.purpose === 'G') || (droppedVehicle.vehicleType === 'H' && order.numPassengers >= 6)) {
 
         order.vehicle = droppedVehicle;
         this.vehicles.splice(event.previousIndex, 1);
