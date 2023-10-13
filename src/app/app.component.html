@@ -2,31 +2,71 @@
 
   <div>
     <div class="example-container">
-      <h2>Vehicles:</h2>
-      <div id="vehicles" cdkDropList [cdkDropListData]="vehicles" class="example-list" [cdkDropListConnectedTo]="['ordersv']"
+    
+      <h2 style="text-align: center;">Vehicles:</h2>
+      <div id="vehicles" cdkDropList [cdkDropListData]="vehicles"  class="example-list" [cdkDropListConnectedTo]="['ordersv']"
         (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of vehicles" cdkDrag >{{item.name}}</div>
+        <div class="example-box" cdkDrag  *ngFor="let item of vehicles" > 
+          
+          <div>
+          <strong>Name:</strong>
+         {{item.name}}
+         </div>
+       <div>
+         <strong>RegistrationNumber:</strong>
+         {{item.registrationNumber}}
+         </div>
+         <div *ngIf="item.vehicleType == 'H'">
+          <strong>Passenger Type:</strong>
+        Passenger
+         </div>
+         <div *ngIf="item.vehicleType == 'L'">
+          <strong>Passenger Type:</strong>
+     Load
+         </div>
+        </div></div>
       </div>
+     
     </div>
+  
     <div class="orders-container">
+      <h2>Orders</h2>
       <div class="flex-container">
+       
         <div class="order" *ngFor="let order of orders;">
          
           <div class="" id="ordersv" cdkDropList  [cdkDropListConnectedTo]="['vehicles']" [cdkDropListData]="orders" (cdkDropListDropped)="onVehicleDropped($event, order)">
+          
             <div class="order-vehicle" *ngIf="!order.vehicle" cdkDrop>Drop Vehicle Here</div>
-            <div class="order-vehicle" *ngIf="order.vehicle" cdkDrag>{{ order.vehicle.name }}</div>
+            <div class="order-vehicle" *ngIf="order.vehicle" cdkDrag> {{ order.vehicle.name }}   <button style="margin-left:30px;" (click)="unallocateVehicle(order)">X</button></div>
           </div>
           <div class="" id="ordersd" cdkDropList [cdkDropListConnectedTo]="['drivers']" [cdkDropListData]="orders"
             (cdkDropListDropped)="onDriverDropped($event, order)">
             <div class="order-driver" *ngIf="!order.driver" cdkDrop>Drop Driver Here</div>
-            <div class="order-driver" *ngIf="order.driver" cdkDrag>{{ order.driver.name }}</div>
+            <div class="order-driver" *ngIf="order.driver" cdkDrag>{{ order.driver.name }}   <button style="margin-left:30px;" (click)="unallocatedriver(order)">X</button></div>
           </div>
           <div class="order-details">
             <strong>Order Details:</strong>
             Duration: {{ order.timeNeeded }} hours, Kilometers: {{ order.approxDistance }} km
           </div>
+          <div class="order-details">
+            <strong>FromLocation:</strong>
+          {{order.fromLocation}}
+          </div>
+          <div class="order-details">
+            <strong>ToLocation:</strong>
+          {{order.toLocation}}
+          </div>
+          <div class="order-details" *ngIf="order.purpose =='P'">
+            <strong>Purpose:</strong>
+         Passenger
+          </div>
+          <div class="order-details" *ngIf="order.purpose== 'G'">
+            <strong>Purpose:</strong>
+         Goods
+          </div>
           <div class="order-cost" >
-            <strong> Cost:<span  *ngIf="order.driver && order.vehicle"> {{ distancecost | currency: 'INR':'symbol-narrow' }}</span></strong>
+            <strong>Vehicle Cost:<span  *ngIf="order.driver && order.vehicle"> {{ distancecost | currency: 'INR':'symbol-narrow' }}</span></strong>
           
           </div>
       
@@ -38,11 +78,33 @@
         </div>
       </div>
     </div>
+    <div>
     <div class="example-container">
       <h2 >Drivers:</h2>
       <div id="drivers" cdkDropList [cdkDropListData]="drivers" class="example-list" [cdkDropListConnectedTo]="['ordersd']"
         (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let driver of drivers" cdkDrag>{{ driver.name }}</div>
+        <div class="example-box" *ngFor="let driver of drivers" cdkDrag>
+          <div>
+            <strong>Name:</strong>
+           {{driver.name}}
+           </div>
+         <div *ngIf="driver.posessHeavyVehicleLicence == false">
+           <strong>License Type:</strong>
+         Normal
+           </div>
+           <div *ngIf="driver.posessHeavyVehicleLicence == true">
+            <strong>License Type:</strong>
+          Heavy
+            </div>
+           <div >
+            <strong>Per Day Rate:</strong>
+          {{driver.perDayRate}}
+           </div>
+           <div >
+            <strong>Over time Rate:</strong>
+       {{driver.overtimeRate}}
+           </div>
+        </div>
       </div>
     </div>
   </div>

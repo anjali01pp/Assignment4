@@ -32,7 +32,7 @@ dropvehicle:any;
   //   this.calculateOrderCost(order);
   // }
   onVehicleDropped(event: CdkDragDrop<string[]>, order: any) {
-  
+    console.log(order)
     const droppedVehicle = this.vehicles[event.previousIndex];
     
   
@@ -53,6 +53,7 @@ dropvehicle:any;
   
   
   onDriverDropped(event: CdkDragDrop<string[]>, order: any) {
+    console.log(order)
     const droppedDriver = this.drivers[event.previousIndex];
   
     if (!order.driver) {
@@ -93,6 +94,7 @@ dropvehicle:any;
  
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   } else {
+ 
     const droppedOrder:any = event.previousContainer.data[event.previousIndex];
     const droppedVehicle = droppedOrder.vehicle;
     const droppedDriver = droppedOrder.driver;
@@ -117,7 +119,18 @@ dropvehicle:any;
   }
 }
 
-  
+unallocateVehicle(order: any) {
+  const allocatedVehicle = order.vehicle;
+  order.vehicle = null;
+  this.vehicles.push(allocatedVehicle);
+}
+unallocatedriver(order: any) {
+  const allocatedDriver = order.driver;
+  order.driver = null;
+  this.drivers.push(allocatedDriver);
+}
+
+ 
   
   calculateTotalCost(): number {
     return this.orders.reduce((totalCost, order) => totalCost + (order.cost || 0), 0);
