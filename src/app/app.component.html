@@ -38,12 +38,12 @@
           <div class="" id="ordersv" cdkDropList  [cdkDropListConnectedTo]="['vehicles']" [cdkDropListData]="orders" (cdkDropListDropped)="onVehicleDropped($event, order)">
           
             <div class="order-vehicle" *ngIf="!order.vehicle" cdkDrop>Drop Vehicle Here</div>
-            <div class="order-vehicle" *ngIf="order.vehicle" cdkDrag> {{ order.vehicle.name }}   <button style="margin-left:30px;" (click)="unallocateVehicle(order)">X</button></div>
+            <div class="order-vehicle" *ngIf="order.vehicle" cdkDrop> {{ order.vehicle.name }}   <button style="margin-left:30px;" (click)="unallocateVehicle(order)">X</button></div>
           </div>
           <div class="" id="ordersd" cdkDropList [cdkDropListConnectedTo]="['drivers']" [cdkDropListData]="orders"
             (cdkDropListDropped)="onDriverDropped($event, order)">
             <div class="order-driver" *ngIf="!order.driver" cdkDrop>Drop Driver Here</div>
-            <div class="order-driver" *ngIf="order.driver" cdkDrag>{{ order.driver.name }}   <button style="margin-left:30px;" (click)="unallocatedriver(order)">X</button></div>
+            <div class="order-driver" *ngIf="order.driver" cdkDrop>{{ order.driver.name }}   <button style="margin-left:30px;" (click)="unallocatedriver(order)">X</button></div>
           </div>
           <div class="order-details">
             <strong>Order Details:</strong>
