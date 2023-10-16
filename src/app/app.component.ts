@@ -57,7 +57,7 @@ dropvehicle:any;
     const droppedDriver = this.drivers[event.previousIndex];
   
     if (!order.driver) {
-      if ((droppedDriver.posessHeavyVehicleLicence && order.purpose === 'G') || (!droppedDriver.posessHeavyVehicleLicence && order.purpose === 'P')) {
+      if ((droppedDriver.posessHeavyVehicleLicence && order.purpose === 'G') || (!droppedDriver.posessHeavyVehicleLicence && order.purpose === 'P' || droppedDriver.posessHeavyVehicleLicence)) {
         
         order.driver = droppedDriver;
         this.drivers.splice(event.previousIndex, 1);
