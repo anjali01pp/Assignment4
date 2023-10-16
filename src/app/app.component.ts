@@ -33,11 +33,20 @@ dropvehicle:any;
   // }
   onVehicleDropped(event: CdkDragDrop<string[]>, order: any) {
     console.log(order)
-    const droppedVehicle = this.vehicles[event.previousIndex];
+    
     
   
     if (!order.vehicle) {
-      if ((droppedVehicle.vehicleType === 'L' && order.purpose === 'P') || (droppedVehicle.vehicleType === 'H' && order.numPassengers == null && order.purpose === 'G') || (droppedVehicle.vehicleType === 'H' && order.numPassengers >= 6)) {
+      const droppedVehicle = this.vehicles[event.previousIndex];
+      if (droppedVehicle && droppedVehicle.vehicleType){
+ 
+        
+        if (
+  (droppedVehicle.vehicleType === 'L' && order.purpose === 'P') ||
+  (droppedVehicle.vehicleType === 'H' &&
+    (order.numPassengers == null || order.numPassengers >= 6) &&
+    order.purpose === 'G')
+){
 
         order.vehicle = droppedVehicle;
         this.vehicles.splice(event.previousIndex, 1);
@@ -49,14 +58,16 @@ dropvehicle:any;
       }
     }
   }
+  }
 
   
   
   onDriverDropped(event: CdkDragDrop<string[]>, order: any) {
     console.log(order)
-    const droppedDriver = this.drivers[event.previousIndex];
+   
   
     if (!order.driver) {
+      const droppedDriver = this.drivers[event.previousIndex];
       if ((droppedDriver.posessHeavyVehicleLicence && order.purpose === 'G') || (!droppedDriver.posessHeavyVehicleLicence && order.purpose === 'P' || droppedDriver.posessHeavyVehicleLicence)) {
         
         order.driver = droppedDriver;
